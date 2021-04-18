@@ -1,0 +1,61 @@
+﻿@model EhcMetadata
+
+<div class="container">
+    <h1 class="govuk-heading-xl">API Response</h1>
+
+    @if (ViewBag.Error.Length > 0)
+    {
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#">@ViewBag.Error</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <a class="govuk-button" asp-action="StartDemo">Try demo again</a>
+    }
+    else
+    {
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                Authentication integration complete
+            </h1>
+            <div class="govuk-panel__body">
+                You have successfully integrated <br />with a DEFRA API using an access token.
+            </div>
+        </div>
+
+        <p class="govuk-body">
+            Listed below is the response from the EHC Metadata API endpoint.
+        </p>
+
+        <table class="govuk-table">
+            <caption class="govuk-table__caption">EHC Metadata</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Title</th>
+                    <th scope="col" class="govuk-table__header">EHC Name</th>
+                    <th scope="col" class="govuk-table__header">Available via API</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                @foreach (var ehc in Model.data)
+                {
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">@ehc.title</td>
+                        <td class="govuk-table__cell">@ehc.ehcName</td>
+                        <td class="govuk-table__cell">@(ehc.isAvailableViaApi ? "Yes" : "No")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a class="govuk-button" asp-action="StartDemo">Start demo again</a>
+    }
+</div>

@@ -1,0 +1,59 @@
+﻿@model AccessTokenResponse
+
+<div class="container">
+    <h1 class="govuk-heading-xl">Using an access token</h1>
+    <p class="govuk-body">
+        Now that we have the Access Token we can request a resource from one of the APIs.
+    </p>
+
+    <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="more-detail">
+                Access Token
+                <a rel="noopener noreferrer" href="https://jwt.io/#id_token=@Model.access_token" style="float: right;" target="_blank">
+                    <img src="http://jwt.io/img/badge.svg" alt="View on JWT.io badge logo">
+                </a>
+            </label>
+        </h1>
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">@Model.access_token</textarea>
+    </div>
+
+    <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="more-Refresh Token">
+                Refresh Token
+            </label>
+        </h1>
+        <textarea class="govuk-textarea" id="more-Refresh Token" name="more-detail" rows="5" aria-describedby="more-detail-hint">@Model.refresh_token</textarea>
+    </div>
+
+    <p class="govuk-body">
+        In the below example we will be calling a Defra testing API that will attempt to verify the access token passed to it and assess whether you have the required scope to access the endpoint.
+    </p>
+
+    <h2><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://localhost:44316/Weather</span></h2>
+
+    <h4 class="govuk-heading-m">Header parameters</h4>
+    <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Field</th>
+                <th scope="col" class="govuk-table__header">Type</th>
+                <th scope="col" class="govuk-table__header">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Authorisation</td>
+                <td class="govuk-table__cell">Access token</td>
+                <td class="govuk-table__cell">The bearer access token</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form asp-action="MakeApiCall">
+        <input name="access" value="@Model.access_token" type="hidden" />
+        <button class="govuk-button" type="submit">Make API Call</button>
+    </form>
+</div>

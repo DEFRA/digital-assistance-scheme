@@ -1,0 +1,99 @@
+﻿<div class="container">
+    <h1 class="govuk-heading-xl">Making an authorization attempt</h1>
+    <p class="govuk-body">
+        To make an authorization attempt you must provide the below parameters as a GET request.
+    </p>
+
+    <h2 class="govuk-heading-l"><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://login.microsoftonline.com/{TenantID}/oauth2/v2.0/authorize</span></h2>
+
+    <h4 class="govuk-heading-m">Route parameters</h4>
+    <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col">Field</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">TenantID</td>
+                <td class="govuk-table__cell">Guid</td>
+                <td class="govuk-table__cell">The Active Directory tenant ID</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 class="govuk-heading-m">Query parameters</h4>
+
+    <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col">Field</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr>
+                <td class="govuk-table__cell">client_id</td>
+                <td class="govuk-table__cell">Guid</td>
+                <td class="govuk-table__cell">The Active Directory Client ID</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">response_type</td>
+                <td class="govuk-table__cell">string</td>
+                <td class="govuk-table__cell">The access response type required from the request. <strong>Use "code"</strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">redirect_uri</td>
+                <td class="govuk-table__cell">URL</td>
+                <td class="govuk-table__cell">The URL that you would like the request to redirect to</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">response_mode</td>
+                <td class="govuk-table__cell">string</td>
+                <td class="govuk-table__cell">The response mode required from the request. <strong>Use "query"</strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">scope</td>
+                <td class="govuk-table__cell">string</td>
+                <td class="govuk-table__cell">The required scopes from the request. <strong>offline_access and https://{Tenant}.onmicrosoft.com/cbad0ea2-716d-41d7-accf-8c48c8e42a25/user_impersonation</strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">state</td>
+                <td class="govuk-table__cell">string</td>
+                <td class="govuk-table__cell"></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">code_challenge</td>
+                <td class="govuk-table__cell">string</td>
+                <td class="govuk-table__cell">
+                    A 256 Hash of the code verifier, required to store for the access token request.
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">code_challenge_method</td>
+                <td class="govuk-table__cell">string</td>
+                <td class="govuk-table__cell">Code challenge method. <strong>Use S256</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="govuk-heading-m">Example request:</h4>
+        <p class="govuk-inset-text" style=" overflow-wrap: break-word;">
+            @ViewBag.Url
+        </p>
+    </div>
+    <div class="col-md-12">
+        <h4 class="govuk-heading-m">Make a request:</h4>
+        <div class="alert alert-light">
+            <a class="govuk-button" href="@ViewBag.Url">Test Authenticate</a>
+        </div>
+    </div>
+</div>

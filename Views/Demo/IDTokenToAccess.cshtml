@@ -1,0 +1,91 @@
+﻿<div class="container">
+    <h1 class="govuk-heading-xl">Requesting an access token</h1>
+    <p class="govuk-body">
+        Now that we have an ID Token from the Code query parameter, we can request an access token to allow communication with the APIs.
+    </p>
+    
+    <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="more-detail">
+                ID Token
+            </label>
+        </h1>
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint">@ViewBag.code</textarea>
+    </div>
+
+    <h2><span class="govuk-tag govuk-tag--green">POST</span><span class="govuk-tag govuk-tag--inactive">https://login.microsoftonline.com/{TenantID}/oauth2/v2.0/token</span></h2>
+
+    <h4 class="govuk-heading-m">Route parameters</h4>
+    <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col">Field</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">TenantID</td>
+                <td class="govuk-table__cell">Guid</td>
+                <td class="govuk-table__cell">The Active Directory tenant ID</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 class="govuk-heading-m">Body parameters <small>application/x-www-url-form-urlencoded</small></h4>
+
+    <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+        <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th scope="col">Field</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">client_id</td>
+            <td class="govuk-table__cell">Guid</td>
+            <td class="govuk-table__cell">The Active Directory Client ID</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">client_secret</td>
+            <td class="govuk-table__cell">string</td>
+            <td class="govuk-table__cell">The Active Directory client secret.</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">code</td>
+            <td class="govuk-table__cell">string</td>
+            <td class="govuk-table__cell">The ID Token</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">grant_type</td>
+            <td class="govuk-table__cell">string</td>
+            <td class="govuk-table__cell">The grant type required from the request. <strong>Use "authorization_code"</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">redirect_uri</td>
+            <td class="govuk-table__cell">string</td>
+            <td class="govuk-table__cell">The URL to redirect to, must match previous request.</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">scope</td>
+            <td class="govuk-table__cell">string</td>
+            <td class="govuk-table__cell">The required scopes from the request.</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">code_verifier</>
+            <td class="govuk-table__cell">string</td>
+            <td class="govuk-table__cell">
+                The code verifier.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<a class="govuk-button" asp-action="GetAccessToken" asp-route-code="@ViewBag.code">Request Access Token</a>
+
