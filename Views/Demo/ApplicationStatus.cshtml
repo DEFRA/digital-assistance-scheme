@@ -9,10 +9,7 @@
 <div class="container">
     <h1 class="govuk-heading-xl">Raising an Export Health Certificate</h1>
 
-    @if (isRequestCheck)
-    {
-        <h4><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://dev-trade-gateway.azure.defra.cloud/trade-sci-exports/uat/v1/ehc-application/@ehcApplication.RequestId/request-status</span></h4>
-    }
+    <h4><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://dev-trade-gateway.azure.defra.cloud/trade-sci-exports/uat/v1/ehc-application/@ehcApplication.RequestId/status</span></h4>
 
     <p class="govuk-body">
         In this request we submitted the application's reference in a GET request to the request-status endpoint.
@@ -26,13 +23,6 @@
         </div>
     </div>
     <br />
-    @if (isRequestCheck)
-    {
-        <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId">Check the request status of this application</a>
-    }
-    else
-    {
-        <a class="govuk-button" asp-controller="Demo" asp-action="ApplicationStatus" asp-route-application="@ehcApplication.RequestId">Check the application status of this application</a>
-    }
+    <a class="govuk-button" asp-controller="Demo" asp-action="ApplicationStatus" asp-route-application="@ehcApplication.RequestId" asp-route-statusType="@StatusType.ApplicationStatus">Check the application status of this application</a>
     <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
 </div>

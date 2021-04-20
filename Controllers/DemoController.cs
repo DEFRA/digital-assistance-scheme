@@ -78,18 +78,19 @@ namespace SupplyChain.ClientApplication.Controllers
             return View();
         }
 
-        [Route("API-Call/EHC-Application/Check/{application}/{statusType}")]
-        public async Task<IActionResult> MakeApplicationCheck([FromRoute] Guid application, string statusType)
+        [Route("API-Call/EHC-Application/Check/{application}/RequestStatus")]
+        public async Task<IActionResult> MakeApplicationCheck([FromRoute] Guid application)
         {
-            dynamic responseContent;
-            if (statusType == nameof(StatusType.RequestStatus))
-            {
-                responseContent = await _exportHealthCertificate.CheckRequestStatus(application);
-            }
-            else
-            {
-                responseContent = await _exportHealthCertificate.CheckApplicationStatus(application);
-            }
+            dynamic responseContent = await _exportHealthCertificate.CheckRequestStatus(application);
+
+            ViewBag.Response = responseContent;
+            return View();
+        }
+
+        [Route("API-Call/EHC-Application/Check/{application}/ApplicationStatus")]
+        public async Task<IActionResult> ApplicationStatus([FromRoute] Guid application)
+        {
+            dynamic responseContent = await _exportHealthCertificate.CheckApplicationStatus(application);
 
             ViewBag.Response = responseContent;
             return View();
