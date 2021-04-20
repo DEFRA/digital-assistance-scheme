@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using SupplyChain.ClientApplication.Models;
 using SupplyChain.ClientApplication.Service.Interface;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -78,16 +79,16 @@ namespace SupplyChain.ClientApplication.Controllers
         }
 
         [Route("API-Call/EHC-Application/Check/{application}/{statusType}")]
-        public async Task<IActionResult> MakeApplicationCheck([FromRoute] Guid application, Enum statusType)
+        public async Task<IActionResult> MakeApplicationCheck([FromRoute] Guid application, string statusType)
         {
-            dynamic responseContent = null;
-            if (Equals(statusType,StatusType.ApplicationStatus))
+            dynamic responseContent;
+            if (statusType == nameof(StatusType.RequestStatus))
             {
-                responseContent = await _exportHealthCertificate.CheckApplicationStatus(application);
+                responseContent = await _exportHealthCertificate.CheckRequestStatus(application);
             }
             else
             {
-                responseContent = await _exportHealthCertificate.CheckRequestStatus(application);
+                responseContent = await _exportHealthCertificate.CheckApplicationStatus(application);
             }
 
             ViewBag.Response = responseContent;
