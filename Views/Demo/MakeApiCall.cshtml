@@ -31,6 +31,8 @@
             </div>
         </div>
 
+        <h4><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://gateway.trade.defra.gov.uk/trade-sci-exports/uat/v1/ehc-metadata</span></h4>
+
         <p class="govuk-body">
             Listed below is the response from the EHC Metadata API endpoint.
         </p>
@@ -56,6 +58,8 @@
             </tbody>
         </table>
 
-        <a class="govuk-button" asp-action="StartDemo">Start demo again</a>
+        <a class="govuk-button" asp-controller="Demo" asp-action="MakeApiCallPostEhc">Try raise an Export Health Certificate</a>
+        <a class="govuk-button govuk-button--secondary" asp-controller="Demo" asp-action="MakeApiCall">Try API endpoint again</a>
+        <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
     }
 </div>

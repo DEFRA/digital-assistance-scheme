@@ -1,0 +1,451 @@
+﻿{
+  "ehcApplication": {
+    "certificateRequiredByDate": "2021-04-29T00:00:00.0000000+00:00",
+    "certificateRegion": "England",
+    "certifier": {
+      "name": "Vets",
+      "address": {
+        "postCode": "M1 3BL",
+        "lineOne": "608 Long Road",
+        "lineTwo": "Small Heath",
+        "city": "Manchester"
+      }
+    },
+    "certificateQuantity": 1,
+    "certificateDelivery": {
+      "address": {
+        "postCode": "B93 12XW",
+        "lineOne": "37 High Street",
+        "lineTwo": "Hale",
+        "city": "London",
+        "country": {
+          "countryId": {
+            "id": "GB",
+            "name": "United Kingdom of Great Britain and Northern Ireland (the)",
+            "schemaId": "ISO3166",
+            "agencyId": "ISO",
+            "language": "en"
+          },
+          "countrySubDivisionId": [
+            {
+              "id": "GB-ENG",
+              "name": "England",
+              "schemaId": "ISO3166-2",
+              "agencyId": "ISO",
+              "language": "en"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "exchangeDocument": {
+    "ehc": {
+      "ehcName": "8293EHC"
+    },
+    "exporterApplicationReferenceId": "Example-8293EHC",
+    "certificateType": {
+      "id": "852"
+    },
+    "exchangeDocumentStatus": {
+      "content": "17",
+      "name": "Requested",
+      "language": "EN"
+    },
+    "veterinarian": {
+      "name": "Jane Smith",
+      "fullName": {
+        "title": "Ms",
+        "givenName": "Jane",
+        "surname": "Smith"
+      },
+      "contactDetail": {
+        "phoneNumber": "01234567890",
+        "emailAddress": "janevets@defra.gov.uk"
+      },
+      "certification": [
+        {
+          "id": "BVSc",
+          "schemaId": "RCVS"
+        }
+      ]
+    }
+  },
+  "consignment": {
+    "exporterConsignmentReferenceId": "EX-CONS-01",
+    "exportExitDateTime": "2021-05-01T00:00:00.0000000+00:00",
+    "departureDateTime": "2021-04-30T00:00:00.0000000+00:00",
+    "consignor": {
+      "name": "Consignor Ltd.",
+      "address": {
+        "postCode": "IL37 3RD",
+        "lineOne": "123 Consignor Street",
+        "city": "Altrincham",
+        "country": {
+          "countryId": {
+            "id": "GB",
+            "name": "United Kingdom of Great Britain and Northern Ireland (the)",
+            "schemaId": "ISO3166",
+            "agencyId": "ISO",
+            "language": "en"
+          }
+        }
+      },
+      "specifiedPerson": {
+        "name": "John Davies",
+        "fullName": {
+          "title": "Mr",
+          "givenName": "John",
+          "surname": "Davies"
+        },
+        "contactDetail": {
+          "phoneNumber": "019988333890"
+        }
+      }
+    },
+    "consignee": {
+      "name": "US Consignee",
+      "address": {
+        "postCode": "20500",
+        "lineOne": "13937 Pennsylvania Avenue",
+        "lineTwo": "Washington",
+        "lineThree": "D.C.",
+        "country": {
+          "countryId": {
+            "id": "US",
+            "name": "United States of America (the)",
+            "schemaId": "ISO3166",
+            "agencyId": "ISO",
+            "language": "en"
+          }
+        }
+      },
+      "specifiedPerson": {
+        "name": "Dwayne Thompson",
+        "fullName": {
+          "title": "Mr",
+          "givenName": "Dwayne",
+          "surname": "Thompson"
+        },
+        "contactDetail": {
+          "phoneNumber": "+155502893893"
+        }
+      }
+    },
+    "origin": [
+      {
+        "country": {
+          "countryId": {
+            "id": "GB",
+            "name": "United Kingdom of Great Britain and Northern Ireland (the)",
+            "schemaId": "ISO3166",
+            "agencyId": "ISO",
+            "language": "en"
+          }
+        }
+      }
+    ],
+    "exportLocation": [
+      {
+        "name": "Exports Ltd",
+        "address": {
+          "postCode": "CL1 0SD",
+          "lineOne": "Exports Hilltop",
+          "lineTwo": "Lower field road",
+          "city": "Nowhere"
+        },
+        "approvalNumber": {
+          "id": "EXP-2909"
+        }
+      }
+    ],
+    "importLocation": [
+      {
+        "borderControlPost": {
+          "id": {
+            "id": "NLEEM1",
+            "name": "Eemshaven",
+            "schemaName": "BorderControlPosts"
+          },
+          "name": "Eemshaven"
+        }
+      }
+    ],
+    "transitLocation": [
+      {
+        "country": {
+          "countryId": {
+            "id": "NL",
+            "name": "Netherlands (the)",
+            "schemaId": "ISO3166",
+            "agencyId": "ISO",
+            "language": "en"
+          }
+        }
+      }
+    ],
+    "loadingLocation": {
+      "name": "Chucky Egg Farm",
+      "address": {
+        "postCode": "CL1 0SD",
+        "lineOne": "Hilltop Farm",
+        "lineTwo": "Lower field road",
+        "city": "Nowhere"
+      },
+      "approvalNumber": {
+        "id": "FRM-7363"
+      }
+    },
+    "unloadingLocation": {
+      "country": {
+        "countryId": {
+          "id": "IT",
+          "name": "Italy",
+          "schemaId": "ISO3166",
+          "agencyId": "ISO",
+          "language": "en"
+        }
+      }
+    },
+    "despatchParty": {
+      "name": "Chucky Egg Farm",
+      "address": {
+        "postCode": "CL1 0SE",
+        "lineOne": "Hilltop Farm",
+        "lineTwo": "Farm Road",
+        "city": "Nowhere",
+        "approvalNumber": {
+          "id": "UK/7/1376"
+        }
+      }
+    },
+    "transportMovement": [
+      {
+        "meansOfTransport": {
+          "id": "36",
+          "name": "Truck, dry bulk"
+        },
+        "meansOfTransportIdentification": "D3FRA",
+        "document": [
+          {
+            "reference": "RD009"
+          }
+        ]
+      },
+      {
+        "meansOfTransport": {
+          "id": "230",
+          "name": "Train, freight"
+        },
+        "meansOfTransportIdentification": "HD6363",
+        "document": [
+          {
+            "reference": "DOC-001"
+          }
+        ]
+      }
+    ]
+  },
+  "consignmentLine": [
+    {
+      "consignmentSummary": {
+        "totalPackages": {
+          "type": {
+            "id": "BX",
+            "name": "Box"
+          },
+          "itemQuantity": {
+            "value": 50
+          }
+        },
+        "totalMeasures": {
+          "netWeight": {
+            "value": 500,
+            "unit": "KGM"
+          },
+          "grossWeight": {
+            "value": 528,
+            "unit": "KGM"
+          }
+        }
+      },
+      "exporterConsignmentLineReferenceId": "LineRef1",
+      "tradeLineItem": [
+        {
+          "sequenceNumber": 1,
+          "exporterTradeLineReferenceId": "LREF-01",
+          "tradeProduct": {
+            "description": "Duck eggs",
+            "scientificName": "Welsh Harlequin",
+            "naturalTemperatureCategory": "Ambient"
+          },
+          "container": [
+            {
+              "containerId": {
+                "id": "MEDU9042400"
+              },
+              "sealId": {
+                "id": "EU20514996"
+              }
+            }
+          ],
+          "measure": {
+            "netWeight": {
+              "value": 200,
+              "unit": "KGM"
+            }
+          },
+          "physicalPackage": [
+            {
+              "type": {
+                "id": "BX",
+                "name": "Box"
+              },
+              "itemQuantity": {
+                "value": 20
+              }
+            }
+          ],
+          "transportMovement": [
+            {
+              "meansOfTransport": {
+                "id": "36",
+                "name": "Truck, dry bulk"
+              },
+              "meansOfTransportIdentification": "D3FRA",
+              "document": [
+                {
+                  "reference": "RD009"
+                }
+              ]
+            },
+            {
+              "meansOfTransport": {
+                "id": "230",
+                "name": "Train, freight"
+              },
+              "meansOfTransportIdentification": "HD6363",
+              "document": [
+                {
+                  "reference": "DOC-001"
+                }
+              ]
+            }
+          ],
+          "packingCentre": [
+            {
+              "organisation": {
+                "name": "Defra Packing Operations"
+              },
+              "location": {
+                "name": "Chucky Egg",
+                "approvalNumber": {
+                  "id": "UK/7/1376"
+                }
+              }
+            }
+          ],
+          "storage": [
+            {
+              "organisation": {
+                "name": "Defra Storage Logistics"
+              },
+              "location": {
+                "approvalNumber": {
+                  "id": "MD077"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sequenceNumber": 2,
+          "exporterTradeLineReferenceId": "LREF-02",
+          "tradeProduct": {
+            "description": "Duck eggs",
+            "scientificName": "Buff",
+            "naturalTemperatureCategory": "Ambient"
+          },
+          "container": [
+            {
+              "containerId": {
+                "id": "MEDU9042401"
+              },
+              "sealId": {
+                "id": "EU20514997"
+              }
+            }
+          ],
+          "measure": {
+            "netWeight": {
+              "value": 300,
+              "unit": "KGM"
+            }
+          },
+          "physicalPackage": [
+            {
+              "type": {
+                "id": "BX",
+                "name": "Box"
+              },
+              "itemQuantity": {
+                "value": 30
+              }
+            }
+          ],
+          "transportMovement": [
+            {
+              "meansOfTransport": {
+                "id": "36",
+                "name": "Truck, dry bulk"
+              },
+              "meansOfTransportIdentification": "D3FRA",
+              "document": [
+                {
+                  "reference": "RD009"
+                }
+              ]
+            },
+            {
+              "meansOfTransport": {
+                "id": "230",
+                "name": "Train, freight"
+              },
+              "meansOfTransportIdentification": "HD6363",
+              "document": [
+                {
+                  "reference": "DOC-001"
+                }
+              ]
+            }
+          ],
+          "packingCentre": [
+            {
+              "organisation": {
+                "name": "Defra Packing Operations"
+              },
+              "location": {
+                "name": "Chucky Egg",
+                "approvalNumber": {
+                  "id": "UK/7/1376"
+                }
+              }
+            }
+          ],
+          "storage": [
+            {
+              "organisation": {
+                "name": "Defra Storage Logistics"
+              },
+              "location": {
+                "approvalNumber": {
+                  "id": "MD077"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}                                                        

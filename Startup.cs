@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using SupplyChain.ClientApplication.Service;
+using SupplyChain.ClientApplication.Service.Interface;
 
 namespace SupplyChain.ClientApplication
 {
@@ -8,6 +10,10 @@ namespace SupplyChain.ClientApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<IDefraAuthenticationService, DefraAuthenticationService>();
+            services.AddScoped<IExportHealthCertificatesService, ExportHealthCertificatesService>();
         }
 
         public void Configure(IApplicationBuilder app)

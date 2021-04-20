@@ -1,0 +1,27 @@
+﻿@using Newtonsoft.Json
+@model EhcMetadata
+@{
+    string jsonResponse = JsonConvert.SerializeObject(ViewBag.Response, Formatting.Indented);
+    EhcApplicationResponse ehcApplication = JsonConvert.DeserializeObject<EhcApplicationResponse>(jsonResponse);
+}
+
+<div class="container">
+    <h1 class="govuk-heading-xl">Raising an Export Health Certificate</h1>
+
+    <h4><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://dev-trade-gateway.azure.defra.cloud/trade-sci-exports/uat/v1/ehc-application/@ehcApplication.RequestId/request-status</span></h4>
+
+    <p class="govuk-body">
+        In this request we submitted the application's reference in a GET request to the request-status endpoint.
+    </p>
+
+    <span class="govuk-caption-l">@DateTime.Now.ToString("T")</span>
+    <h2 class="govuk-heading-l">Response body</h2>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <textarea class="govuk-textarea code-view" rows="15" readonly>@jsonResponse</textarea>
+        </div>
+    </div>
+    <br />
+    <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId">Check the status of this application</a>
+    <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
+</div>
