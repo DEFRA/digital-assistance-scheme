@@ -28,6 +28,6 @@
         </div>
     </div>
     <br/>
-    <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId">Check the status of this application</a>
+    <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId" asp-route-statusType="@StatusType.RequestStatus">Check the request status of this application</a>
     <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
 </div>

@@ -10,6 +10,7 @@ namespace SupplyChain.ClientApplication.Service.Interface
 
         Task<dynamic> Create(JObject requestContentParsed);
 
-        Task<dynamic> CheckStatus(Guid application);
+        Task<dynamic> CheckRequestStatus(Guid application);
+        Task<dynamic> CheckApplicationStatus(Guid application);
     }
 }

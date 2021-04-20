@@ -22,6 +22,10 @@
         </div>
     </div>
     <br />
-    <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId">Check the status of this application</a>
+    <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId" asp-route-statusType="@StatusType.RequestStatus">Check the request status of this application</a>
+    @if (ehcApplication._links.Count > 1)
+    {
+        <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId" asp-route-statusType="@StatusType.ApplicationStatus">Check the application status of this application</a>
+    }
     <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
 </div>

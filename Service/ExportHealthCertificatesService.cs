@@ -44,11 +44,23 @@ namespace SupplyChain.ClientApplication.Service
             return responseContent;
         }
 
-        public async Task<dynamic> CheckStatus(Guid application)
+        public async Task<dynamic> CheckRequestStatus(Guid application)
         {
             var accessToken = _defraAuthenticationService.GetFromCache("accessToken");
             var responseContent = await defraTradeApiGateway
                 .AppendPathSegments("trade-sci-exports", "uat", "v1", "ehc-application", application, "request-status")
+                .WithOAuthBearerToken(accessToken.access_token)
+                .AllowAnyHttpStatus()
+                .GetJsonAsync(CancellationToken.None);
+
+            return responseContent;
+        }
+
+        public async Task<dynamic> CheckApplicationStatus(Guid application)
+        {
+            var accessToken = _defraAuthenticationService.GetFromCache("accessToken");
+            var responseContent = await defraTradeApiGateway
+                .AppendPathSegments("trade-sci-exports", "uat", "v1", "ehc-application", application, "status")
                 .WithOAuthBearerToken(accessToken.access_token)
                 .AllowAnyHttpStatus()
                 .GetJsonAsync(CancellationToken.None);
