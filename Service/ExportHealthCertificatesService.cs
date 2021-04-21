@@ -32,6 +32,18 @@ namespace SupplyChain.ClientApplication.Service
             return metadata;
         }
 
+        public async Task<dynamic> GetEhcExample(string ehc)
+        {
+            var accessToken = _defraAuthenticationService.GetFromCache("accessToken");
+            var responseContent = await defraTradeApiGateway
+                .AppendPathSegments("trade-sci-exports", "uat", "v1", "ehc-application-example", ehc)
+                .WithOAuthBearerToken(accessToken.access_token)
+                .AllowAnyHttpStatus()
+                .GetJsonAsync(CancellationToken.None);
+
+            return responseContent;
+        }
+
         public async Task<dynamic> Create(JObject requestContentParsed)
         {
             var accessToken = _defraAuthenticationService.GetFromCache("accessToken");

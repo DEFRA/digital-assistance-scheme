@@ -14,11 +14,13 @@ namespace SupplyChain.ClientApplication.Controllers
     {
         private readonly IDefraAuthenticationService _defraAuthenticationService;
         private readonly IExportHealthCertificatesService _exportHealthCertificate;
+        private readonly IReferenceDataService _referenceDataService;
 
-        public DemoController(IDefraAuthenticationService defraAuthenticationService, IExportHealthCertificatesService exportHealthCertificatesService)
+        public DemoController(IDefraAuthenticationService defraAuthenticationService, IExportHealthCertificatesService exportHealthCertificatesService, IReferenceDataService referenceDataService)
         {
             _defraAuthenticationService = defraAuthenticationService;
             _exportHealthCertificate = exportHealthCertificatesService;
+            _referenceDataService = referenceDataService;
         }
 
         [Route("Begin-Demo")]
@@ -61,20 +63,23 @@ namespace SupplyChain.ClientApplication.Controllers
             return View(metadata);
         }
 
-        [Route("API-Call/EHC-Application")]
-        public async Task<IActionResult> MakeApiCallPostEhc()
+        [Route("API-Call/EHC-Application/Prepare")]
+        public async Task<IActionResult> CreateEhcApplication()
         {
-            string requestContent;
-            using (StreamReader r = new StreamReader("DemoFiles/ehc-application.json"))
-            {
-                requestContent = r.ReadToEnd();
-            }
-            JObject requestContentParsed = JObject.Parse(requestContent);
-
-            var responseContent = await _exportHealthCertificate.Create(requestContentParsed);
+            var responseContent = await _exportHealthCertificate.GetEhcExample("8293EHC");
 
             ViewBag.Response = responseContent;
-            ViewBag.Request = requestContent;
+            return View();
+        }
+
+        [Route("API-Call/EHC-Application/Submit")]
+        public async Task<IActionResult> MakeApiCallPostEhc(string json)
+        {
+            JObject jObjectEhc = JObject.Parse(json);
+            var responseContent = await _exportHealthCertificate.Create(jObjectEhc);
+
+            ViewBag.Response = responseContent;
+            ViewBag.Request = json;
             return View();
         }
 
@@ -95,5 +100,22 @@ namespace SupplyChain.ClientApplication.Controllers
             ViewBag.Response = responseContent;
             return View();
         }
+
+        [Route("API-Call/Reference-Data")]
+        public async Task<IActionResult> ReferenceData()
+        {
+            var refDataMeta = await _referenceDataService.GetEhcMetadata();
+            return View(refDataMeta);
+        }
+
+        [Route("API-Call/Reference-Data/{endpoint}")]
+        public async Task<IActionResult> ReferenceDataWithEndpoint(string endpoint)
+        {
+            var refDataMeta = await _referenceDataService.GetEhcMetadata();
+            ViewBag.RefData = await _referenceDataService.GetRefDataWithDynamicEndpoint(endpoint);
+            ViewBag.Endpoint = endpoint;
+            return View(refDataMeta);
+        }
+
     }
 }

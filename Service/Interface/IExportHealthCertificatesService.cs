@@ -7,9 +7,8 @@ namespace SupplyChain.ClientApplication.Service.Interface
     public interface IExportHealthCertificatesService
     {
         Task<dynamic> GetEhcMetadata();
-
+        Task<dynamic> GetEhcExample(string ehc);
         Task<dynamic> Create(JObject requestContentParsed);
-
         Task<dynamic> CheckRequestStatus(Guid application);
         Task<dynamic> CheckApplicationStatus(Guid application);
     }

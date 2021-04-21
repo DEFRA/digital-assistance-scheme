@@ -47,19 +47,31 @@
                 </tr>
             </thead>
             <tbody class="govuk-table__body">
-                @foreach (var ehc in Model.data)
+                @foreach (var ehc in Model.Data)
                 {
                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">@ehc.title</td>
-                        <td class="govuk-table__cell">@ehc.ehcName</td>
-                        <td class="govuk-table__cell">@(ehc.isAvailableViaApi ? "Yes" : "No")</td>
+                        <td class="govuk-table__cell">@ehc.Title</td>
+                        <td class="govuk-table__cell">@ehc.EhcName</td>
+                        <td class="govuk-table__cell">@(ehc.IsAvailableViaApi ? "Yes" : "No")</td>
                     </tr>
                 }
             </tbody>
         </table>
 
-        <a class="govuk-button" asp-controller="Demo" asp-action="MakeApiCallPostEhc">Try raise an Export Health Certificate</a>
         <a class="govuk-button govuk-button--secondary" asp-controller="Demo" asp-action="MakeApiCall">Try API endpoint again</a>
         <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <h4 class="govuk-heading-m">EHC Application</h4>
+                <a class="govuk-button" asp-controller="Demo" asp-action="CreateEhcApplication">Try now</a>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <h4 class="govuk-heading-m">Reference data</h4>
+                <a class="govuk-button" asp-controller="Demo" asp-action="ReferenceData">Try now</a>
+            </div>
+        </div>
+
+        
     }
 </div>

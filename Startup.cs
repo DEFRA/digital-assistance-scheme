@@ -14,6 +14,7 @@ namespace SupplyChain.ClientApplication
             services.AddHttpContextAccessor();
             services.AddScoped<IDefraAuthenticationService, DefraAuthenticationService>();
             services.AddScoped<IExportHealthCertificatesService, ExportHealthCertificatesService>();
+            services.AddScoped<IReferenceDataService, ReferenceDataService>();
         }
 
         public void Configure(IApplicationBuilder app)

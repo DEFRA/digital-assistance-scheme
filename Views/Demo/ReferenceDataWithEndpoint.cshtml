@@ -1,0 +1,59 @@
+﻿@using Newtonsoft.Json
+@model List<ReferenceDataMeta>
+@{
+    string jsonResponse = JsonConvert.SerializeObject(ViewBag.RefData, Formatting.Indented);
+}
+<h1 class="govuk-heading-xl">Reference Data</h1>
+
+<h4><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://gateway.trade.defra.gov.uk/trade-sci-reference-data/uat/v1/metadata</span></h4>
+
+<p class="govuk-body">
+    Listed below is the response from the reference data, metadata API endpoint.
+</p>
+
+<div class="govuk-inset-text">
+    You can click on any of the values in the "API Endpoint" column to view an example response.
+</div>
+
+<table class="govuk-table">
+    <caption class="govuk-table__caption">Reference Data</caption>
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">Description</th>
+            <th scope="col" class="govuk-table__header">API Endpoint</th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        @foreach (var refData in Model)
+        {
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">@refData.Name</td>
+                <td class="govuk-table__cell">@refData.Description</td>
+                <td class="govuk-table__cell">
+                    <ul class="govuk-list">
+                        @foreach (var link in refData._links)
+                        {
+                            <li><a class="govuk-link" asp-controller="Demo" asp-action="ReferenceDataWithEndpoint" asp-route-endpoint="@link.Rel">/@link.Rel</a></li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<span class="govuk-caption-l">View a response from an endpoint</span>
+<h2 class="govuk-heading-l">@ViewBag.Endpoint</h2>
+
+<h4><span class="govuk-tag govuk-tag--blue">GET</span><span class="govuk-tag govuk-tag--inactive">https://gateway.trade.defra.gov.uk/trade-sci-reference-data/uat/v1/@ViewBag.Endpoint</span></h4>
+
+<h2 class="govuk-heading-l">Response body</h2>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <textarea class="govuk-textarea code-view" rows="15" readonly>@jsonResponse</textarea>
+    </div>
+</div>
+<br />
+<a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
+<a class="govuk-button" asp-controller="Demo" asp-action="CreateEhcApplication">Try create an EHC application</a>

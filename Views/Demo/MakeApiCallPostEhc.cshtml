@@ -28,6 +28,14 @@
         </div>
     </div>
     <br/>
+    <p class="govuk-body">
+        Once a 200 response has been received you can begin to check the status of the application.<br/>
+        Whilst using the UAT API version you may use the change status functionality within the developer portal to move an application through the application process.<br/>
+        <br/>
+        To do this, log in to the portal, go to your application, select view and finally, select view activity. In the view activity section you should see the submitted EHC and will be able to change its status.
+        <br/>
+        <a class="govuk-link" href="https://developer-portal.trade.defra.gov.uk/Applications/ViewApps" target="_blank">View applications and change status</a>
+    </p>
     <a class="govuk-button" asp-controller="Demo" asp-action="MakeApplicationCheck" asp-route-application="@ehcApplication.RequestId" asp-route-statusType="@StatusType.RequestStatus">Check the request status of this application</a>
     <a class="govuk-button govuk-button--secondary" asp-action="StartDemo">Start demo again</a>
 </div>
