@@ -64,18 +64,28 @@ namespace SupplyChain.ClientApplication.Controllers
         }
 
         [Route("API-Call/EHC-Application/Prepare")]
-        public async Task<IActionResult> CreateEhcApplication()
+        public async Task<IActionResult> CreateEhcApplication(bool errorWithPayload = false)
         {
             var responseContent = await _exportHealthCertificate.GetEhcExample("8293EHC");
 
             ViewBag.Response = responseContent;
+            ViewBag.ErrorWithPayload = errorWithPayload;
             return View();
         }
 
         [Route("API-Call/EHC-Application/Submit")]
         public async Task<IActionResult> MakeApiCallPostEhc(string json)
         {
-            JObject jObjectEhc = JObject.Parse(json);
+            JObject jObjectEhc;
+            try
+            {
+                jObjectEhc = JObject.Parse(json);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("CreateEhcApplication", new {errorWithPayload = true});
+            }
+
             var responseContent = await _exportHealthCertificate.Create(jObjectEhc);
 
             ViewBag.Response = responseContent;
